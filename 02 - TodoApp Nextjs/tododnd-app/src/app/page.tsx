@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button";
 import Column from "@/components/Column";
+import ModalConfirm from "@/components/ModalConfirm";
 import ModalTaks from "@/components/ModalTask";
 import { COLUMNS, INITIAL_TASKS } from "@/constants/Task.constans";
 import { ITask} from "@/types/Task";
@@ -13,6 +14,10 @@ export default function Home() {
 
   const [tasks, setTasks] = useState<ITask[]>([...INITIAL_TASKS])
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [activeTask, setActiveTask] = useState<{
+    activity: string;
+    task: ITask;
+  }| null>(null)
 
   useEffect(() => {
     const storedTasks = localStorage.getItem('tasks');
@@ -34,6 +39,32 @@ export default function Home() {
     setShowModal(false);
   }
 
+
+  const handleUpdateTask = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget)
+
+    const updatedTask: ITask = {
+      id:  activeTask?.task.id as string,
+      title: formData.get('title') as string,
+      description: formData.get('description') as string,
+      status: activeTask?.task.status as ITask['status']
+
+    }
+
+    setTasks(
+      (prev) => prev.map(
+        (taskses) => taskses.id === updatedTask.id ? updatedTask : taskses
+      )
+    );
+    e.currentTarget.reset();
+    setActiveTask(null)
+
+
+
+  }
+
   const handleCreateTask = (e: React.ChangeEvent<HTMLFormElement>) => {
 
     e.preventDefault();
@@ -41,7 +72,7 @@ export default function Home() {
     const formData = new FormData(e.currentTarget)
 
     const newTask: ITask = {
-      id:  String(tasks.length + 1),
+      id:  String(Date.now()) ,
       title: formData.get('title') as string,
       description: formData.get('description') as string,
       status: 'TODO'
@@ -74,6 +105,13 @@ export default function Home() {
     setTasks(newTasks);
   }
 
+  const handleDeleteTask = () => {
+    setTasks((prev) => 
+      prev.filter((task) => task.id !== activeTask?.task.id)
+  )
+  setActiveTask(null)
+  }
+
 
 
   return (
@@ -92,7 +130,12 @@ export default function Home() {
 
           {
             COLUMNS.map((kolom) => (
-              <Column key={kolom.id} column={kolom}  task={tasks.filter((task) => task.status === kolom.id)}/>
+              <Column 
+              key={kolom.id} 
+              column={kolom}  
+              task={tasks.filter((task) => task.status === kolom.id)}
+              setActiveTask={setActiveTask}
+              />
             ))
           }
 
@@ -101,6 +144,25 @@ export default function Home() {
       </div>
 
       {showModal && <ModalTaks onCancel={handleShowModalClose} onSubmit={handleCreateTask}/> }
+
+      {activeTask?.activity === 'update' && (
+        <ModalTaks 
+          onSubmit={handleUpdateTask} 
+          onCancel={() => setActiveTask(null)}
+          activeTask={activeTask.task}
+          type="Edit"
+        />
+      )}
+
+      {activeTask?.activity === 'delete' && (
+        <ModalConfirm
+          onConfirm={handleDeleteTask} 
+          onCancel={() => setActiveTask(null)}
+          title="Delete Task!"
+          message="Are you sure you want to delete di task?"
+          type="Delete"
+        />
+      )}
     </section>
   );
 }

@@ -11,3 +11,8 @@ export interface IColumn {
     id: TaskStatus;
     title: string;
 }
+
+export interface IActiveTask {
+    activity: string;
+    task: ITask;
+}

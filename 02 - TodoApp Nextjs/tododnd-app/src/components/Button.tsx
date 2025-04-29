@@ -8,7 +8,7 @@ interface BtnProps {
 }
 
 export default function Button(props: BtnProps) {
-    const {children,type, onClick, className} = props;
+    const {children,type ='button', onClick, className} = props;
     return (
         <button onClick={onClick} type={type} className={`${className} rounded-lg bg-blue-500 py-2 px-3 font-semibold`}>
             {children}
