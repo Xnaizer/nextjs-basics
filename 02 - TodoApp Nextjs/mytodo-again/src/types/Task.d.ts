@@ -9,5 +9,10 @@ export interface ITugas {
 
 export interface IKolom {
     id: TugasStatus;
-    task: ITugas;
+    judul: string;
+}
+
+export interface ITugasAktif {
+    aktivitas : string;
+    tugas: ITugas;
 }
