@@ -33,6 +33,7 @@ export default function TaskCard(props:TaskCardType) { // pembuatan komponen Tas
             {...attributes}
             style={style}
             // memasukkan semua hal yang akan dibutuhkan oleh card untuk dapat di drag
+            className="bg-white p-4 rounded-lg pointer-grab flex justify-between hover: bg-neutral-300"
         >
             <div>
                 <h3 className="font-medium text-neutral-700">{task.title}</h3>
