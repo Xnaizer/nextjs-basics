@@ -12,14 +12,14 @@ export default function HomeSection() {
     }
 
     return (
-        <section className="w-full min-h-screen bg-black/100 bg-gradient-to-t from-blue-400 to-black pt-24 flex justify-center z-50">
+        <section className="w-full  bg-black/100 bg-gradient-to-t from-blue-400 to-black pt-24 flex justify-center z-50">
             
             
             <div className="w-full max-w-[100rem] h-full flex flex-col lg:flex-row justify-between">
 
                 
                 <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-16">
-                    <h1 className="text-white text-4xl md:text-6xl lg:text-7xl tracking-tighter font-semibold leading-tight">
+                    <h1 className="text-white text-4xl lg:text-6xl xl:text-7xl tracking-tighter font-semibold leading-tight">
                         Revolutionizing Crowdfunding with <span className="bg-gradient-to-b from-cyan-400/100 to-blue-400 bg-clip-text text-transparent">
                         the Power of Blockchain
                         </span>.
@@ -50,12 +50,12 @@ export default function HomeSection() {
                 </div>
 
                 
-                <div className="w-full lg:w-1/2 flex flex-col md:flex-row gap-6 md:gap-12 justify-center p-8 md:p-12 lg:p-16">
+                <div className="w-full lg:w-1/2 flex flex-col md:flex-row gap-6 md:gap-12 justify-center p-8 md:p-12 lg:p-16 ">
                     
 
                     
                     <div className="w-full md:w-1/2 p-[3px] rounded-lg bg-gradient-to-b from-cyan-500 to-purple-500 overflow-hidden">
-                    <div className="relative z-0 w-full h-[200px] sm:h-[300px] md:h-[350px] lg:h-full rounded-lg overflow-hidden">
+                    <div className="relative z-0 w-full h-[200px] sm:h-[300px] md:h-[350px] lg:h-full rounded-lg overflow-hidden shadow-2xl">
                         <Image
                         src={HomeImg1}
                         alt="Home1"
@@ -67,7 +67,7 @@ export default function HomeSection() {
 
                     
                     <div className="w-full md:w-1/2 p-[3px] rounded-lg bg-gradient-to-b from-cyan-500 to-purple-500 overflow-hidden">
-                    <div className="relative z-0 w-full h-[200px] sm:h-[300px] md:h-[350px] lg:h-full rounded-lg overflow-hidden">
+                    <div className="relative z-0 w-full h-[200px] sm:h-[300px] md:h-[350px] lg:h-full rounded-lg overflow-hidden shadow-2xl">
                         <Image
                         src={HomeImg2}
                         alt="Home2"
