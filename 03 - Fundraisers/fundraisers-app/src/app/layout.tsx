@@ -1,3 +1,4 @@
+import MouseMove from "@/components/MouseMove";
 import "./globals.css";
 
 import {Readex_Pro} from 'next/font/google';
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={readex.variable}>
       <body>
+        <MouseMove />
         {children}
       </body>
     </html>

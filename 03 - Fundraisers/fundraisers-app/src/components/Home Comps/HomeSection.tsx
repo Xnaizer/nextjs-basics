@@ -12,7 +12,7 @@ export default function HomeSection() {
     }
 
     return (
-        <section className="w-full  bg-black/100 bg-gradient-to-t from-blue-400 to-black pt-24 flex justify-center z-50">
+        <section id="HomeSection" className="w-full  bg-black/100 bg-gradient-to-t from-blue-400 to-black pt-16 md:pt-24 flex justify-center z-50">
             
             
             <div className="w-full max-w-[100rem] h-full flex flex-col lg:flex-row justify-between">

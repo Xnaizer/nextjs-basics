@@ -7,3 +7,14 @@
 body {
   font-family: var(--font-readex);
 }
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px #3b82f6; 
+}
+
+.marquee-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px #3b82f6; /* Cyan */
+  text-stroke: 1px #3b82f6;
+}
