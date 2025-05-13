@@ -1,3 +1,4 @@
+import AboutUsSection from "@/components/Home Comps/AboutUsSection";
 import FundGoalSection from "@/components/Home Comps/FundGoalSection";
 import HomeSection from "@/components/Home Comps/HomeSection";
 import HowItWorkSection from "@/components/Home Comps/HowItWorkSection";
@@ -14,6 +15,7 @@ export default function HomeRaisers() {
                 <HomeSection />  
                 <FundGoalSection />
                 <HowItWorkSection />
+                <AboutUsSection />
             </div>
         </section>
     )

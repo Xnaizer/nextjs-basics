@@ -40,7 +40,7 @@ const menuItems = [
   return (
     <nav
       className={`fixed top-0 left-0 z-50 w-full px-4 lg:px-8 transition-shadow backdrop-blur-sm duration-300 bg-transparent  ${
-        scrollActive ? "shadow-[0_2px_10px_rgba(255,255,255,0.15)] shadow-cyan-400" : ""
+        scrollActive ? "shadow-[0_2px_10px_rgba(255,255,255,0.15)] id: 1," : ""
       }`}
     >
       <section className="max-w-[100rem] mx-auto flex flex-wrap items-center justify-between py-4">
@@ -89,7 +89,7 @@ const menuItems = [
 
           <div className="w-full lg:w-auto   lg:mt-0 flex justify-center text-center">
             <Buttons
-              className="text-white font-light border-[3px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-700 hover:bg-cyan-600 cursor-pointer w-full lg:w-auto "
+              className="text-white font-light border-[3px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-600 hover:bg-cyan-500 cursor-pointer w-full lg:w-auto "
               onClick={() => {
                 setMenuOpen(false); // optionally close menu on click
                 handleConnectWallet();

@@ -24,22 +24,22 @@ export default function HowItWorkSection() {
 
                     
                     <div>
-                        <div className="absolute left-1/2 -translate-x-1/2 top-[15rem] w-10 h-10 rounded-full border-2 bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
+                        <div className="absolute left-1/2 -translate-x-1/2 top-[15rem] w-10 h-10 rounded-full border- border-white bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
                             <div className="bg-black w-5 h-5 rounded-full"></div>
                         </div>
-                        <div className="absolute left-1/2 -translate-x-1/2 top-[33rem] w-10 h-10 rounded-full border-2 bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
+                        <div className="absolute left-1/2 -translate-x-1/2 top-[33rem] w-10 h-10 rounded-full border- border-white bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
                             <div className="bg-black w-5 h-5 rounded-full"></div>
                         </div>
-                        <div className="absolute left-1/2 -translate-x-1/2 top-[52rem] w-10 h-10 rounded-full border-2 bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
+                        <div className="absolute left-1/2 -translate-x-1/2 top-[52rem] w-10 h-10 rounded-full border- border-white bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
                             <div className="bg-black w-5 h-5 rounded-full"></div>
                         </div>
-                        <div className="absolute left-1/2 -translate-x-1/2 top-[70rem] w-10 h-10 rounded-full border-2 bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
+                        <div className="absolute left-1/2 -translate-x-1/2 top-[70rem] w-10 h-10 rounded-full border- border-white bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center ">
                             <div className="bg-black w-5 h-5 rounded-full"></div>
                         </div>
-                        <div className="absolute left-1/2 -translate-x-1/2 top-[89rem] w-10 h-10 rounded-full border-2 bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
+                        <div className="absolute left-1/2 -translate-x-1/2 top-[89rem] w-10 h-10 rounded-full border- border-white bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
                             <div className="bg-black w-5 h-5 rounded-full"></div>
                         </div>    
-                        <div className="absolute left-1/2 -translate-x-1/2 top-[109rem] w-10 h-10 rounded-full border-2 bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
+                        <div className="absolute left-1/2 -translate-x-1/2 top-[109.5rem] w-10 h-10 rounded-full border- border-white bg-gradient-to-b from-cyan-500 to-purple-500 z-10 hidden lg:flex items-center justify-center">
                             <div className="bg-black w-5 h-5 rounded-full"></div>
                         </div>                     
                     </div>
@@ -96,7 +96,7 @@ export default function HowItWorkSection() {
 
             <div>
                 <Marquee gradient={false} speed={50} className="w-full  overflow-hidden">
-                <span className="text-neutral-700 text-[5rem]  font-light whitespace-nowrap select-none ">
+                <span className="text-neutral-700 text-[4rem]  font-light whitespace-nowrap select-none ">
                     Revolutionizing Crowdfunding with the Power of Blockchain. Revolutionizing Crowdfunding with the Power of Blockchain. 
                 </span>
                 </Marquee>
