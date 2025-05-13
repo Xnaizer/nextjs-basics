@@ -1,13 +1,20 @@
 import MouseMove from "@/components/MouseMove";
 import "./globals.css";
-
-import {Readex_Pro} from 'next/font/google';
+import { Readex_Pro } from 'next/font/google';
 
 const readex = Readex_Pro({
-  subsets: ['latin'], // subset wajib
-  weight: ['300', '400','500','600', '700'], 
-  variable: '--font-readex',     // untuk dipakai di Tailwind
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-readex',
 });
+
+export const metadata = {
+  title: 'Fundraisers',
+  description: 'Crowdfunding on blockchain',
+  icons: {
+    icon: '/Fundraisers-icon.svg',
+  },
+};
 
 export default function RootLayout({
   children,
