@@ -11,9 +11,10 @@ export default function Footer() {
 
     const ResourcesSubs = [
         {id: 1, name : 'Tutorials', path: '/'},
-        {id: 2, name : 'Research Papers', path: '/'},
-        {id: 3, name : 'Code Samples', path: '/'},
-        {id: 4, name : 'Tools', path: '/'},
+        {id: 2, name : 'Pelita Bangsa', path: 'https://lms.pelitabangsa.co.id/'},
+        {id: 3, name : 'Research Papers', path: '/'},
+        {id: 4, name : 'Code Samples', path: 'https://github.com/danantiri/smart-contract'},
+        {id: 4, name : 'Tools', path: 'https://nextjs.org/'},
     ]
   
     return (

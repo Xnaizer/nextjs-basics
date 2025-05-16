@@ -5,11 +5,16 @@ import HomeImg2 from "../../../public/HomeBanner2.jpg"
 import Buttons from "../Buttons";
 import Image from "next/image";
 
-export default function HomeSection() {
 
-    const handleDummy = () => {
-        console.log("hi")
-    }
+interface HomeSectionProps {
+  onOpen: () => void;
+}
+
+export default function HomeSection({onOpen}:HomeSectionProps) {
+
+    // const handleDummy = () => {
+    //     console.log("hi")
+    // }
 
     return (
         <section id="HomeSection" className="w-full  bg-black/100 bg-gradient-to-t from-blue-400 to-black pt-16 md:pt-24 flex justify-center z-50">
@@ -18,8 +23,8 @@ export default function HomeSection() {
             <div className="w-full max-w-[100rem] h-full flex flex-col lg:flex-row justify-between">
 
                 
-                <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-16">
-                    <h1 className="text-white text-4xl lg:text-6xl xl:text-7xl tracking-tighter font-semibold leading-tight">
+                <div className="w-full lg:w-2/3 p-8 md:p-12 lg:p-16">
+                    <h1 className="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tighter font-semibold leading-tight">
                         Revolutionizing Crowdfunding with <span className="bg-gradient-to-b from-cyan-400/100 to-blue-400 bg-clip-text text-transparent">
                         the Power of Blockchain
                         </span>.
@@ -32,7 +37,12 @@ export default function HomeSection() {
                         
                         <Buttons 
                             type="button" 
-                            onClick={handleDummy}
+                            onClick={() => {
+                            const target = document.getElementById("ExploreSection");
+                            if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                            }
+                            }}
                             className="text-white border-[3px] border-cyan-500 bg-cyan-400 py-4 px-6 w-full sm:w-48 rounded-xl hover:border-cyan-400 hover:bg-cyan-500 cursor-pointer"
                         >
                             Explore Program
@@ -41,7 +51,7 @@ export default function HomeSection() {
                         
                         <Buttons 
                             type="button" 
-                            onClick={handleDummy}
+                            onClick={onOpen}
                             className="text-white border-[3px] border-cyan-500 py-4 px-6 w-full sm:w-48 rounded-xl bg-black hover:border-cyan-400 hover:bg-slate-900 cursor-pointer"
                         >
                             Contribute

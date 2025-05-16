@@ -19,6 +19,7 @@ export default function Navbar() {
   
 const menuItems = [
   { label: "Home", targetId: "HomeSection" },
+  { label: "Goals", targetId: "FundraisersGoal" },
   { label: "Explore", targetId: "ExploreSection" },
   { label: "How It Work", targetId: "HowItWorkSection" },
   { label: "About Us", targetId: "AboutUsSection" },
@@ -55,19 +56,19 @@ const menuItems = [
         </div>
 
         
-        <div className="lg:hidden ml-auto">
+        <div className="lg:hidden ml-auto ">
           <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Menu">
             {menuOpen ? (
-              <X className="text-white w-8 pt-2 h-10" />
+              <X className="text-white w-8 pt-2 h-10 cursor-pointer" />
             ) : (
-              <Menu className="text-white w-8 pt-2 h-10" />
+              <Menu className="text-white w-8 pt-2 h-10 cursor-pointer" />
             )}
           </button>
         </div>
 
         
         <div
-          className={`w-full lg:w-auto flex-col lg:flex-row gap-10 lg:gap-16 items-center bg-transparent text-white text-lg font-readex font-light 
+          className={`w-full lg:w-auto flex-col lg:flex-row gap-8 lg:gap-12 items-center bg-transparent text-white text-md lg:text-lg font-readex font-light 
             transition-all duration-300 ease-in-out overflow-hidden
             ${menuOpen ? "flex mt-6" : "hidden"} lg:flex`}
         >
@@ -91,7 +92,7 @@ const menuItems = [
             <Buttons
               className="text-white font-light border-[3px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-600 hover:bg-cyan-500 cursor-pointer w-full lg:w-auto "
               onClick={() => {
-                setMenuOpen(false); // optionally close menu on click
+                setMenuOpen(false); 
                 handleConnectWallet();
               }}
               type="button"
