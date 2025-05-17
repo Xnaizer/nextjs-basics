@@ -1,5 +1,6 @@
 "use client"
 
+import { dummyData } from "@/constants/ProgramData.constant";
 import ProgramCard from "../ProgramCard";
 // import { FaArrowRight } from "react-icons/fa";
 
@@ -27,9 +28,17 @@ export default function ExploreSection({onOpen}: ExploreSectionProps) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-12 justify-items-center  sm:px-8">
-            <ProgramCard onOpen={onOpen} />
-            <ProgramCard onOpen={onOpen} />
-            <ProgramCard onOpen={onOpen} />
+            {dummyData.map((item, index) => (
+              <ProgramCard 
+                key={`${item.id}-${index}`}  
+                onOpen={onOpen} 
+                name={item.name}   
+                desc={item.desc}
+                category={item.category}
+                createdAt={item.createdAt}
+                photoUrl={item.photoUrl}
+              />
+            ))}
         </div>
         <h2 className="text-center pt-12">Explore More</h2>
         </div>

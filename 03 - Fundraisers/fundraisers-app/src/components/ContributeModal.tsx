@@ -2,15 +2,29 @@
 
 import Buttons from "./Buttons";
 import { X } from 'lucide-react';
+import { useEffect } from "react";
 
 interface ContributeModalProps {
-  onClose: () => void;
+  onCardClose: () => void;
+  isContributeOpen: boolean;
 }
 
-export default function ContributeModal({ onClose }: ContributeModalProps) {
+export default function ContributeModal({ onCardClose, isContributeOpen }: ContributeModalProps) {
   const handleBunny = () => {
     console.log("hi");
   };
+
+    useEffect(() => {
+      if (isContributeOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+  
+      return () => {
+        document.body.style.overflow = 'auto';
+      };
+    }, [isContributeOpen]);
 
   return (
     <div className="bg-black/40 min-h-screen w-full fixed z-50 inset-0 flex items-center justify-center shadow-2xl mt-10">
@@ -21,7 +35,7 @@ export default function ContributeModal({ onClose }: ContributeModalProps) {
         }}
       >
         <button
-          onClick={onClose}
+          onClick={onCardClose}
           className="absolute top-4 right-4 text-neutral-400 hover:text-white transition cursor-pointer"
         >
           <X size={26} />

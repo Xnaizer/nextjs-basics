@@ -14,7 +14,19 @@ export default function HomeRaisers() {
 
     const [contributeIsOpen, setContributeIsOpen] = useState<boolean>(false);
     const [cardIsOpen, setCardIsOpen] = useState<boolean>(false);
+    const [historyIsOpen, setHistoryIsOpen] = useState<boolean>(false);
 
+
+    const handleOpenContributeCard = () => {
+        setContributeIsOpen(true);
+        setCardIsOpen(false);
+        setHistoryIsOpen(false);
+    }
+
+    const handleCardClose = () => {
+        setCardIsOpen(false);
+        setHistoryIsOpen(false);
+    }
 
 
     return (
@@ -25,9 +37,16 @@ export default function HomeRaisers() {
             <div className="relative z-10">
                 <HomeSection onOpen={() => setContributeIsOpen(true)}/>  
 
-                {contributeIsOpen && <ContributeModal onClose={() => setContributeIsOpen(false)}/> }
+                {contributeIsOpen && <ContributeModal onCardClose={() => setContributeIsOpen(false)}
+                isContributeOpen={contributeIsOpen}    
+                /> }
                 
-                {cardIsOpen &&                 <CardModal onClose={() => setCardIsOpen(false)}/>}
+                {cardIsOpen && <CardModal 
+                onCardClose={ handleCardClose} onContributeCard={handleOpenContributeCard}
+                onHistoryOpen={() => setHistoryIsOpen(!historyIsOpen)} 
+                isHistoryOpen={historyIsOpen}
+                isCardOpen={cardIsOpen}
+                />}
 
                 <FundGoalSection />
                 <ExploreSection onOpen={() => setCardIsOpen(true)} />

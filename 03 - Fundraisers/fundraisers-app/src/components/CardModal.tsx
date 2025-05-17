@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react";
 import testImg from '../../public/HomeBanner1.jpg'
 import Buttons from "./Buttons"
 import { X } from 'lucide-react';
@@ -8,16 +9,96 @@ import { FaGlobeAsia } from "react-icons/fa";
 import { LuClock3 } from "react-icons/lu";
 
 interface CardModalProps {
-  onClose: () => void;
+  onCardClose: () => void;
+  onContributeCard: () => void;
+  onHistoryOpen: () => void;
+  isHistoryOpen: boolean;
+  isCardOpen: boolean;
 }
 
-export default function CardModal({ onClose }: CardModalProps) {
-  const handleBunny = () => {
-    console.log("hi");
-  };
+export default function CardModal({ onCardClose, onContributeCard, onHistoryOpen,isHistoryOpen, isCardOpen }: CardModalProps) {
+//   const handleBunny = () => {
+//     console.log("hi");
+//   };
+
+  useEffect(() => {
+    if (isHistoryOpen || isCardOpen ) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isHistoryOpen,isCardOpen]);
 
   return (
     <div className="bg-black/40 min-h-screen w-full fixed z-50 inset-0 flex items-center justify-center p-4 md:p-12">
+      {isHistoryOpen ? (
+        <div
+          className="bg-black text-white w-full max-w-[95%] sm:max-w-3xl rounded-2xl mt-20 relative shadow-lg overflow-hidden"
+          style={{ boxShadow: '0 0 20px 4px rgba(255, 255, 255, 0.3)' }}
+        >
+          
+          <div className="flex justify-between items-center p-4 border-b border-neutral-700">
+            <h3 className="text-lg font-thin">History Contribute</h3>
+            <button onClick={onCardClose} className="text-neutral-400 hover:text-white cursor-pointer">
+              <X size={26} />
+            </button>
+          </div>
+
+          <div className="max-h-96 overflow-y-auto p-4">
+            <table className="w-full table-auto text-sm md:text-base">
+              <thead>
+                <tr className="bg-neutral-800">
+                  <th className="px-3 py-2 text-left">Date</th>
+                  <th className="px-3 py-2 text-right">Amount (IDRX)</th>
+                  <th className="px-3 py-2 text-left">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { date: '2025-05-10', amount: 250000, desc: 'Donasi awal' },
+                  { date: '2025-05-12', amount: 150000, desc: 'Tambahan donasi' },
+                  { date: '2025-05-14', amount: 300000, desc: 'Support campaign' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  { date: '2025-05-16', amount: 200000, desc: 'Donasi akhir' },
+                  
+                ].map((row, i) => (
+                  <tr
+                    key={i}
+                    className={i % 2 === 0 ? 'bg-neutral-900' : ''}
+                  >
+                    <td className="px-3 py-2 font-thin">{row.date}</td>
+                    <td className="px-3 py-2 text-right font-thin">{row.amount.toLocaleString()}</td>
+                    <td className="px-3 py-2 font-thin">{row.desc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+        
+          <div className="p-4 border-t border-neutral-700 flex justify-end">
+            <Buttons
+              className="text-white font-light border-[2px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-600 hover:bg-cyan-500 cursor-pointer"
+              onClick={onHistoryOpen}
+              type="button"
+            >
+              Back
+            </Buttons>
+          </div>
+        </div>
+      ) : (
       <div
         className="bg-black text-white w-full max-w-[95%] sm:max-w-3xl rounded-2xl mt-20 relative shadow-lg "
         style={{ boxShadow: '0 0 20px 4px rgba(255, 255, 255, 0.3)' }}
@@ -25,7 +106,7 @@ export default function CardModal({ onClose }: CardModalProps) {
        
         <div className="relative w-full h-32 md:h-64">
           <button
-            onClick={onClose}
+            onClick={onCardClose}
             className="absolute top-4 right-4 text-neutral-400 hover:text-white transition cursor-pointer z-50"
           >
             <X size={26} />
@@ -87,20 +168,37 @@ export default function CardModal({ onClose }: CardModalProps) {
 
 
           <div className="flex flex-col md:flex-row gap-3 md:gap-6 items-center justify-center">
-            {["Program Link", "History Withdraw", "Contribute"].map((label, idx) => (
-              <Buttons
-                key={idx}
-                className="text-white font-light border-[2px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-600 hover:bg-cyan-500 cursor-pointer text-[0.75rem] md:text-md w-full md:w-56 text-center"
-                onClick={handleBunny}
-                type="button"
-              >
-                {label}
-              </Buttons>
-            ))}
+            <Buttons
+            
+            className="text-white font-light border-[2px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-600 hover:bg-cyan-500 cursor-pointer text-[0.75rem] md:text-md w-full md:w-56 text-center"
+            onClick={onContributeCard}
+            type="button"
+            >
+            Program Link
+            </Buttons>
+
+            <Buttons
+            
+            className="text-white font-light border-[2px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-600 hover:bg-cyan-500 cursor-pointer text-[0.75rem] md:text-md w-full md:w-56 text-center"
+            onClick={onHistoryOpen}
+            type="button"
+            >
+            History
+            </Buttons>
+
+            <Buttons
+            
+            className="text-white font-light border-[2px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-600 hover:bg-cyan-500 cursor-pointer text-[0.75rem] md:text-md w-full md:w-56 text-center"
+            onClick={onContributeCard}
+            type="button"
+            >
+            Contribute
+            </Buttons>
           </div>
 
         </section>
       </div>
+      )}
     </div>
   );
 }

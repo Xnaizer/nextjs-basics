@@ -42,14 +42,18 @@ export default function Footer() {
         <div className="text-white p-2 flex flex-col">
           <p className=" mb-1">Topics</p>
           {TopicsSubs.map((item) => (
-            <a key={item.id} href={item.path} className="text-sm text-neutral-400 pt-2 "><span className="hover:text-cyan-400">{item.name}</span></a>
+            <div key={item.id}>
+              <a  href={item.path} className="text-sm text-neutral-400 pt-2 "><span className="hover:text-cyan-400">{item.name}</span></a>
+            </div>
           ))}
         </div>
 
         <div className="text-white p-2 flex flex-col">
           <p className=" mb-1">Resources</p>
-          {ResourcesSubs.map((item) => (
-            <a key={item.id} href={item.path} className="text-sm text-neutral-400 pt-2 "><span className="hover:text-cyan-400">{item.name}</span></a>
+          {ResourcesSubs.map((item,i) => (
+            <div key={`${item.id}-${i}`} >
+              <a  href={item.path} className="text-sm text-neutral-400 pt-2 "><span className="hover:text-cyan-400">{item.name}</span></a>
+            </div>
           ))}
         </div>
 
@@ -59,7 +63,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="text-center font-thin py-8 text-white text-sm px-4">
+      <div className="text-center font-thin py-8 text-white text-[0.75rem] px-4">
         © 2024-2045, Fundraisers.com, Inc. or its affiliates.
       </div>
     </footer>
