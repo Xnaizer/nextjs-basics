@@ -2,6 +2,7 @@
 import React from "react";
 import { FundraisersWork } from "@/constants/HowItWork.constant"
 import Marquee from "react-fast-marquee";
+import { motion } from "framer-motion";
 
 export default function HowItWorkSection() {
 
@@ -49,39 +50,54 @@ export default function HowItWorkSection() {
                     
 
                     
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 z-0 ">
+
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 z-0">
                     {FundraisersWork.map((item, idx) => (
-                    <React.Fragment key={item.id}>
+                        <React.Fragment key={item.id}>
                         {idx % 2 === 0 ? (
-                        <>
-                            <div className="w-full flex justify-between lg:justify-start ">
-                            <div className="w-full lg:w-[28rem] border-[2px] border-cyan-400 rounded-xl p-6 bg-black text-white  shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300">
+                            <>
+                            <div className="w-full flex justify-between lg:justify-start">
+                                <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                                className="w-full lg:w-[28rem] border-[2px] border-cyan-400 rounded-xl p-6 bg-black text-white shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300"
+                                >
                                 <p className="text-lg font-thin">
-                                0{item.id}. <span className="text-cyan-400">{item.name}</span>
+                                    0{item.id}. <span className="text-cyan-400">{item.name}</span>
                                 </p>
                                 <h2 className="pt-3 text-lg font-thin">{item.title}</h2>
                                 <p className="pt-3 text-neutral-400 text-sm">{item.desc}</p>
-                            </div>
+                                </motion.div>
                             </div>
                             <div className="hidden lg:block" />
-                        </>
+                            </>
                         ) : (
-                        <>
+                            <>
                             <div className="hidden lg:block" />
                             <div className="w-full flex justify-between lg:justify-end">
-                            <div className="w-full lg:w-[28rem] border-[2px] border-cyan-400 rounded-xl p-6 bg-black text-white  shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300">
+                                <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                                className="w-full lg:w-[28rem] border-[2px] border-cyan-400 rounded-xl p-6 bg-black text-white shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300"
+                                >
                                 <p className="text-lg font-thin">
-                                0{item.id}. <span className="text-cyan-400">{item.name}</span>
+                                    0{item.id}. <span className="text-cyan-400">{item.name}</span>
                                 </p>
                                 <h2 className="pt-3 text-lg font-thin">{item.title}</h2>
                                 <p className="pt-3 text-neutral-400 text-sm">{item.desc}</p>
+                                </motion.div>
                             </div>
-                            </div>
-                        </>
+                            </>
                         )}
-                    </React.Fragment>
+                        </React.Fragment>
                     ))}
                     </div>
+
 
 
 

@@ -30,15 +30,13 @@ export default function ContributeModal({ onCardClose, isContributeOpen }: Contr
     <div className="bg-black/40 min-h-screen w-full fixed z-50 inset-0 flex items-center justify-center shadow-2xl mt-10">
       <div
         className="bg-black text-white w-full max-w-[90%] sm:max-w-xl p-14 sm:p-16 md:p-20 pt-16 rounded-2xl relative"
-        style={{
-          boxShadow: '0 0 20px 4px rgba(255, 255, 255, 0.3)',
-        }}
+        style={{ boxShadow: '0 0 10px 1px rgba(0, 0, 0, 1)' }}
       >
         <button
           onClick={onCardClose}
-          className="absolute top-4 right-4 text-neutral-400 hover:text-white transition cursor-pointer"
+          className="absolute top-4 right-4 text-neutral-400 hover:text-white transition cursor-pointer p-1 md:p-2 hover:bg-neutral-900/90  bg-neutral-800/90 rounded-full"
         >
-          <X size={26} />
+          <X className="w-5 md:w-8  h-5 md:h-8"  />
         </button>
 
         <h2 className="text-center text-md md:text-xl font-thin mb-4 md:mb-8">

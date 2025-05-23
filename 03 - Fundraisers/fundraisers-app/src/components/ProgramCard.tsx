@@ -49,11 +49,11 @@ export default function ProgramCard(props: ProgramCardProps ) {
       </div>
 
       <div className="p-6 md:p-8">
-        <p className="text-cyan-400 flex items-center gap-2 text-sm md:text-base">
+        <p className="text-cyan-400 flex items-center gap-2 text-sm lg:text-base">
           <FaGlobeAsia /> {category}
         </p>
 
-        <h2 className="text-white text-lg md:text-xl py-2 pt-3 leading-snug">
+        <h2 className="text-white text-lg md:text-[1rem] lg:text-xl py-2 pt-3 leading-snug">
           {name}
         </h2>
 
@@ -61,7 +61,7 @@ export default function ProgramCard(props: ProgramCardProps ) {
           {desc}
         </p>
 
-        <div className="flex justify-between items-center pt-2 text-[0.7rem] md:text-sm">
+        <div className="flex justify-between items-center pt-2 text-[0.7rem] md:text-[0.75rem]">
           <h4 className="flex items-center gap-2">
             <LuClock3 />
               <span>Created {new Date(createdAt).toLocaleDateString('id-ID', {

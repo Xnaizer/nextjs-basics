@@ -1,15 +1,24 @@
 "use client"
 
-import { dummyData } from "@/constants/ProgramData.constant";
+import { dummyData, ProgramType } from "@/constants/ProgramData.constant";
 import ProgramCard from "../ProgramCard";
+import { useState } from "react";
+import Buttons from "../Buttons";
 // import { FaArrowRight } from "react-icons/fa";
 
 interface ExploreSectionProps {
   onOpen: () => void;
+  selectedCard: (program: ProgramType) => void;
 }
 
 
-export default function ExploreSection({onOpen}: ExploreSectionProps) {
+export default function ExploreSection({onOpen, selectedCard}: ExploreSectionProps) {
+  
+  // const handleDummy =  () => console.log("hey");
+  const [showMore, setShowMore] = useState<boolean>(false);
+  const showProgramCard = showMore ? dummyData : dummyData.slice(0,3);
+
+
   return (
     <section
     id="ExploreSection"
@@ -27,20 +36,26 @@ export default function ExploreSection({onOpen}: ExploreSectionProps) {
             
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-12 justify-items-center  sm:px-8">
-            {dummyData.map((item, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-12 justify-items-center  sm:px-8">
+            {showProgramCard.map((item, index) => (
               <ProgramCard 
                 key={`${item.id}-${index}`}  
-                onOpen={onOpen} 
+                onOpen={() => {
+                  selectedCard(item);
+                  onOpen();
+                }} 
                 name={item.name}   
                 desc={item.desc}
                 category={item.category}
                 createdAt={item.createdAt}
                 photoUrl={item.photoUrl}
+                
               />
             ))}
         </div>
-        <h2 className="text-center pt-12">Explore More</h2>
+        <div className="w-full flex mx-auto justify-center mt-12">
+          <Buttons type="button" className="text-white px-4 py-2  rounded-xl border-[2px] border-cyan-400 font-thin" onClick={() => setShowMore(!showMore)}>Show {showMore ? 'Less' : 'More'}</Buttons>
+        </div>
         </div>
     </div>
     </section>

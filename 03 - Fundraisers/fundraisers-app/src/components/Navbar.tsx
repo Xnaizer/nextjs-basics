@@ -38,20 +38,28 @@ const menuItems = [
     return () => window.removeEventListener('scroll', handleScroll)
   },[]);
 
+
+
   return (
     <nav
       className={`fixed top-0 left-0 z-50 w-full px-4 lg:px-8 transition-shadow backdrop-blur-sm duration-300 bg-transparent  ${
         scrollActive ? "shadow-[0_2px_10px_rgba(255,255,255,0.15)] id: 1," : ""
       }`}
     >
-      <section className="max-w-[100rem] mx-auto flex flex-wrap items-center justify-between py-4">
+      <section className="max-w-[100rem] mx-auto flex flex-wrap items-center justify-between py-4  px-2">
         
         
-        <div className="flex items-center gap-2 cursor-pointer">
-          <Image src={FundraisersLogo} alt="Logo" width={32} height={21} />
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => {
+                const target = document.getElementById('HomeSection');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                  setMenuOpen(false);
+                }
+              }}>
+          <Image src={FundraisersLogo} alt="Logo" width={32} height={21} className="w-6 lg:w-8 " />
           <div>
-            <span className="text-cyan-400 text-2xl font-light tracking-tighter">Fund</span>
-            <span className="text-white text-2xl font-light tracking-tighter">raisers</span>
+            <span className="text-cyan-400 text-lg md:text-2xl lg:text-2xl font-light tracking-tighter">Fund</span>
+            <span className="text-white text-lg md:text-2xl lg:text-2xl  font-light tracking-tighter">raisers</span>
           </div>
         </div>
 
@@ -59,18 +67,18 @@ const menuItems = [
         <div className="lg:hidden ml-auto ">
           <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Menu">
             {menuOpen ? (
-              <X className="text-white w-8 pt-2 h-10 cursor-pointer" />
+              <X className="text-white w-8 h-8 md:w-12 md:h-12  pt-2  cursor-pointer" />
             ) : (
-              <Menu className="text-white w-8 pt-2 h-10 cursor-pointer" />
+              <Menu className="text-white w-8 h-8 md:w-12 md:h-12  pt-2  cursor-pointer" />
             )}
           </button>
         </div>
 
         
         <div
-          className={`w-full lg:w-auto flex-col lg:flex-row gap-8 lg:gap-12 items-center bg-transparent text-white text-md lg:text-lg font-readex font-light 
+          className={`w-full lg:w-auto flex-col lg:flex-row gap-8  lg:gap-12 xl:gap-16 items-center bg-transparent text-white  font-readex font-light 
             transition-all duration-300 ease-in-out overflow-hidden
-            ${menuOpen ? "flex mt-6" : "hidden"} lg:flex`}
+            ${menuOpen ? "flex mt-6 md:mt-0" : "hidden"} lg:flex`}
         >
           {menuItems.map(({ label, targetId }) => (
             <h2
@@ -82,7 +90,7 @@ const menuItems = [
                   setMenuOpen(false);
                 }
               }}
-              className="hover:text-cyan-400 cursor-pointer"
+              className="hover:text-cyan-400 cursor-pointer text-[0.9rem] lg:text-[1rem]"
             >
               {label}
             </h2>
@@ -90,7 +98,7 @@ const menuItems = [
 
           <div className="w-full lg:w-auto   lg:mt-0 flex justify-center text-center">
             <Buttons
-              className="text-white font-light border-[3px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-600 hover:bg-cyan-500 cursor-pointer w-full lg:w-auto "
+              className="text-white font-light border-[3px] border-cyan-500 py-2 px-4 rounded-xl hover:border-cyan-600 hover:bg-cyan-500 cursor-pointer w-full lg:w-auto text-[0.9rem] lg:text-[1rem]"
               onClick={() => {
                 setMenuOpen(false); 
                 handleConnectWallet();
